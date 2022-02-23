@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Row, Col, Container} from 'react-bootstrap';
-
-
+import SideMenu from './components/side-menu/SideMenu';
+import { Layout } from 'antd';
 
 function App() {
   return (
     <div className="App">
-      
-        <Row>
-          <Col sm={2} className='menu'>
-            Menu
-          </Col>
-          <Col sm={10} className='content'>
-            Content
-            </Col>
-        </Row>
-      
+        <Layout style={{height : '100vh'}}>
+          <SideMenu />
+          <Layout>
+                  <Layout.Content style={{ margin: '24px 16px 0' }}>
+                      <div className="content" style={{ padding: 24, height : '100vh'}}>
+                      content
+                      </div>
+                  </Layout.Content>
+                  <Layout.Footer style={{ textAlign: 'center' }}>M2 DOSI 2022 - Soucle Applicatif</Layout.Footer>
+          </Layout>
+            
+        </Layout>
     </div>
   );
 }

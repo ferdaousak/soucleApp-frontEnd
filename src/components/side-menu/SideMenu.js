@@ -8,6 +8,7 @@ import {
     ReadOutlined 
   } from '@ant-design/icons';
 import './SideMenu.css';
+import { Link } from "react-router-dom";
 
 const {Sider} = Layout;
 const {SubMenu} = Menu;
@@ -17,12 +18,12 @@ function SideMenu() {
                 <Sider>
                 <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
                     <Menu.Item key="1" icon={<HomeOutlined/>}>
-                    Tableau de board
+                    <Link to="home" >Tableau de board</Link>
                     </Menu.Item>
                     <SubMenu key="sub" icon={<UserOutlined />} title="Administration">
-                        <Menu.Item key="2" icon={<FileOutlined />}>Formation</Menu.Item>
-                        <Menu.Item key="3" icon={<EditOutlined />}>Enseignants</Menu.Item>
-                        <Menu.Item key="4" icon={<ReadOutlined />}>UE</Menu.Item>
+                        <Menu.Item key="2" icon={<FileOutlined />}> <Link to="formations" > Formations </Link></Menu.Item>
+                        <Menu.Item key="3" icon={<EditOutlined />}> <Link to="enseignants" >Enseignants </Link> </Menu.Item>
+                        <Menu.Item key="4" icon={<ReadOutlined />}> <Link to="ue" ></Link>UE</Menu.Item>
                     </SubMenu>
                 </Menu>
                 </Sider>

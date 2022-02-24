@@ -12,7 +12,7 @@ function App() {
           <SideMenu />
           <Layout>
                   <Layout.Content style={{ margin: '24px 16px 0' }}>
-                      <div className="content" style={{ padding: 24, height : '100vh'}}>
+                      <div className="content" style={{ padding: 24, height : '100%'}}>
                       <Outlet />
                       </div>
                   </Layout.Content>

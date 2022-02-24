@@ -12,17 +12,20 @@ import {
 import HomePage from './components/home/home';
 import Formation from './components/Formation/Formation';
 import Enseignants from './components/Enseignants/Enseignants';
-import Ue from './components/UE/UE';
+import Candidats from './components/Candidats/candidats';
+import Promotions from './components/Promotions/promotions';
 
 ReactDOM.render(
   
   <BrowserRouter>
   <Routes>
     <Route path="/" element={<App />}>
-      <Route index path="home" element={<HomePage />} />
+      <Route index element={<HomePage />} />
       <Route path="formations" element={<Formation />} />
       <Route path="enseignants" element={<Enseignants />} />
-      <Route path="ue" element={<Ue />} />
+      <Route path="candidats" element={<Candidats />} />
+      <Route path="promotions" element={<Promotions />} />
+      
     </Route>
   </Routes>
 </BrowserRouter>,  

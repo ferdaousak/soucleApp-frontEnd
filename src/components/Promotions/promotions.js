@@ -24,6 +24,11 @@ function Promotions() {
     
     const columns = [
         {
+            title: 'Sigle Promotion',
+            dataIndex: 'siglePromotion',
+            key: 'siglePromotion'
+        },
+        {
             title: 'Formation',
             dataIndex: 'formation',
             key: 'formation',
@@ -40,11 +45,6 @@ function Promotions() {
             dataIndex: 'enseignant',
             key: 'enseignant',
             render : enseignant => <Link to="/enseignants">{enseignant.nom}</Link>
-        },
-        {
-            title: 'Sigle Promotion',
-            dataIndex: 'siglePromotion',
-            key: 'siglePromotion'
         },
         {
             title: 'Nombre Max Etudiant',

@@ -1,6 +1,8 @@
 import React, { useContext} from 'react';
-import { Table } from 'antd';
+import { Alert, Table, Tabs } from 'antd';
 import DataContext from '../../storage/dataContext';
+import AddEnseignant from './addEnseignant';
+
 
 function Enseignants() {
 
@@ -37,8 +39,36 @@ function Enseignants() {
 
     return ( 
         
-            <Table  pagination={{ defaultPageSize: 5, showSizeChanger: true, pageSizeOptions: ['5', '10', '15']}} size='small' columns={columns} dataSource={enseignants} />
-        
+        <>
+
+            <Tabs defaultActiveKey="1" >
+                <Tabs.TabPane tab="Liste des enseignants" key="1">
+                    {
+                        enseignants[0] && <Table  pagination={{ defaultPageSize: 5, showSizeChanger: true, pageSizeOptions: ['5', '10', '15']}} size='small' columns={columns} dataSource={enseignants} />
+                    }
+                </Tabs.TabPane>
+                <Tabs.TabPane tab="Ajouter Enseignant" key="2">
+                    <AddEnseignant />
+                </Tabs.TabPane>
+                <Tabs.TabPane tab="Chercher Enseigant par numero" key="3">
+                    chercher par numero
+                </Tabs.TabPane>
+                <Tabs.TabPane tab="Chercher Enseigant par nom" key="4">
+                    chercher par nom
+                </Tabs.TabPane>
+                <Tabs.TabPane tab="Chercher Enseigant par email" key="5">
+                    chercher par email
+                </Tabs.TabPane>
+            </Tabs>
+            
+              {enseignants.error && <Alert  message = {enseignants.status+'  '+enseignants.error}
+                                            description={enseignants.message}
+                                            type="error"
+                                            showIcon>
+                                    </Alert>}
+        </>
+            
+          
      );
 }
 

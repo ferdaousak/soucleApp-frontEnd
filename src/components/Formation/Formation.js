@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Table } from 'antd';
+import { Alert, Table } from 'antd';
 import DataContext from '../../storage/dataContext';
 
 function Formation() {
@@ -32,7 +32,17 @@ function Formation() {
 
     return ( 
         
-            <Table  pagination={{ defaultPageSize: 5, showSizeChanger: true, pageSizeOptions: ['5', '10', '15']}} size='small' columns={columns} dataSource={formations} />
+       <>
+       {
+           formations[0] && <Table  pagination={{ defaultPageSize: 5, showSizeChanger: true, pageSizeOptions: ['5', '10', '15']}} size='small' columns={columns} dataSource={formations} />
+       }
+       {formations.error && <Alert message = {formations.status+'  '+formations.error}
+                                    description={formations.message}
+                                    type="error"
+                                    showIcon>
+            </Alert>}
+       </>
+        
         
      );
 }

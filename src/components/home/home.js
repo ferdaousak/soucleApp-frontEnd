@@ -1,21 +1,27 @@
-import { Badge, Card, Image } from 'antd';
+import { Badge, Card } from 'antd';
 import Avatar from 'antd/lib/avatar/avatar';
 import Meta from 'antd/lib/card/Meta';
-import React from 'react';
+import React, { useContext } from 'react';
 import "./home.css"
 import teacher from "./../../img/teacher.png";
 import formation from "./../../img/Research paper-amico.png";
 import students from "./../../img/students.png";
 import promotions from "./../../img/class.png";
 import { Link } from 'react-router-dom';
-function HomePage(propos) {
+import DataContext from '../../storage/dataContext';
+
+
+function HomePage(props) {
+
+        const data = useContext(DataContext);
+
     return (  
 
         <div className='badges'>
             <Link to="enseignants">
                 <Card hoverable 
-                    cover= {<Badge count={5} size="large" status='warning'>
-                    <Avatar src={<Image src={teacher} />} size={{xl : 200}} />
+                    cover= {<Badge count={data.enseignants.length} size="large" status='success'>
+                    <Avatar src={teacher}  size={{xl : 200}} />
                 </Badge>}  >
                 <Meta className='title' title="Enseignants"  />
                 </Card >
@@ -24,8 +30,8 @@ function HomePage(propos) {
             <Link to = "promotions">
             
                 <Card hoverable 
-                    cover= {<Badge count={5} size="large" status='warning'>
-                    <Avatar src={<Image src={promotions} />} size={{xl : 200}} />
+                    cover= {<Badge count={data.promotions.length} size="large" status='success'>
+                    <Avatar src={promotions} size={{xl : 200}} />
                 </Badge>}  >
                 <Meta className='title' title="Promotions"  />
                 </Card >
@@ -34,8 +40,8 @@ function HomePage(propos) {
             <Link to="formations">
                 
                 <Card hoverable 
-                    cover= {<Badge count={5} size="large" status='warning'>
-                    <Avatar src={<Image src={formation} />} size={{xl : 200}} />
+                    cover= {<Badge count={data.formations.length} size="large" status='success'>
+                    <Avatar  src={formation}  size={{xl : 200}} />
                 </Badge>}  >
                 <Meta className='title' title="Formations"/> 
                     
@@ -44,8 +50,8 @@ function HomePage(propos) {
 
             <Link to="candidats">
                 <Card hoverable 
-                    cover= {<Badge count={5} size="large" status='warning'>
-                    <Avatar src={<Image src={students} />} size={{xl : 200}} />
+                    cover= {<Badge count={data.candidats.length} size="large" status='success'>
+                    <Avatar src={students} size={{xl : 200}} />
                 </Badge>}  >
                 <Meta className='title' title="Candidats"/>
                 </Card >

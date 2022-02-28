@@ -1,27 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { Table } from 'antd';
-import { getAllCandidats } from '../../services/candidatService';
 import { Link } from 'react-router-dom';
+import DataContext from '../../storage/dataContext';
 
 function Candidats() {
 
-    const [data, setData] = useState();
+    const {candidats} = useContext(DataContext);
 
-
-    useEffect(() => {
-            async function loaddata()
-            {
-                const response = await getAllCandidats();
-                console.log(response);
-                setData(response.json);
-            }
-        loaddata()
-    
-      return () => {
-        
-      }
-    }, [])
-    
     const columns = [
         {
           title: 'Nom',
@@ -59,9 +44,11 @@ function Candidats() {
 
     return ( 
         
-            <Table  pagination={{ defaultPageSize: 5, showSizeChanger: true, pageSizeOptions: ['5', '10', '15']}} size='small' columns={columns} dataSource={data} />
-        
+        <Table  pagination={{ defaultPageSize: 5, showSizeChanger: true, pageSizeOptions: ['5', '10', '15']}} 
+                size='small' 
+                columns={columns}
+                dataSource={candidats} />
      );
 }
 
-export default Candidats;
+export default Candidats;   

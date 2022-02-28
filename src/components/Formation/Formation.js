@@ -1,26 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { Table } from 'antd';
-import { getAllFormations } from '../../services/formationService';
+import DataContext from '../../storage/dataContext';
 
 function Formation() {
 
-    const [data, setData] = useState();
+    const {formations} = useContext(DataContext);
 
-
-    useEffect(() => {
-            async function loaddata()
-            {
-                const response = await getAllFormations();
-                console.log(response);
-                setData(response.json);
-            }
-        loaddata()
-    
-      return () => {
-        
-      }
-    }, [])
-    
     const columns = [
         {
           title: 'Code de formation',
@@ -47,7 +32,7 @@ function Formation() {
 
     return ( 
         
-            <Table  pagination={{ defaultPageSize: 5, showSizeChanger: true, pageSizeOptions: ['5', '10', '15']}} size='small' columns={columns} dataSource={data} />
+            <Table  pagination={{ defaultPageSize: 5, showSizeChanger: true, pageSizeOptions: ['5', '10', '15']}} size='small' columns={columns} dataSource={formations} />
         
      );
 }

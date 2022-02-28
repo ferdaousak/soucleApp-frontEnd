@@ -1,26 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import {getAllEnseignants} from './../../services/enseignantsService'
-import { Pagination, Table } from 'antd';
-import { Container } from 'react-bootstrap';
+import React, { useContext} from 'react';
+import { Table } from 'antd';
+import DataContext from '../../storage/dataContext';
 
 function Enseignants() {
 
-    const [data, setData] = useState();
-
-
-    useEffect(() => {
-            async function loaddata()
-            {
-                const response = await getAllEnseignants();
-                console.log(response);
-                setData(response.json);
-            }
-        loaddata()
-    
-      return () => {
-        
-      }
-    }, [])
+    const {enseignants} = useContext(DataContext);
     
     const columns = [
         {
@@ -53,7 +37,7 @@ function Enseignants() {
 
     return ( 
         
-            <Table  pagination={{ defaultPageSize: 5, showSizeChanger: true, pageSizeOptions: ['5', '10', '15']}} size='small' columns={columns} dataSource={data} />
+            <Table  pagination={{ defaultPageSize: 5, showSizeChanger: true, pageSizeOptions: ['5', '10', '15']}} size='small' columns={columns} dataSource={enseignants} />
         
      );
 }

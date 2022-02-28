@@ -1,27 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { Table } from 'antd';
-import { getAllPromotions } from '../../services/promotionService';
 import { Link } from 'react-router-dom';
+import DataContext from '../../storage/dataContext';
 
 function Promotions() {
 
-    const [data, setData] = useState();
+    const {promotions} = useContext(DataContext);
 
-
-    useEffect(() => {
-            async function loaddata()
-            {
-                const response = await getAllPromotions();
-                console.log(response);
-                setData(response.json);
-            }
-        loaddata()
-    
-      return () => {
-        
-      }
-    }, [])
-    
     const columns = [
         {
             title: 'Sigle Promotion',
@@ -60,7 +45,7 @@ function Promotions() {
 
     return ( 
         
-            <Table  pagination={{ defaultPageSize: 5, showSizeChanger: true, pageSizeOptions: ['5', '10', '15']}} size='small' columns={columns} dataSource={data} />
+            <Table  pagination={{ defaultPageSize: 5, showSizeChanger: true, pageSizeOptions: ['5', '10', '15']}} size='small' columns={columns} dataSource={promotions} />
         
      );
 }

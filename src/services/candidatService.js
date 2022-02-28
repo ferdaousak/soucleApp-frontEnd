@@ -5,7 +5,6 @@ export const getAllCandidats = async () =>
             methode : 'GET',
         } 
     )
-
     const json = await response.json();
 
     return {json : json}

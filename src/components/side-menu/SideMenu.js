@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Layout, Menu} from 'antd';
 import {
     HomeOutlined,
@@ -14,7 +14,10 @@ import { Link } from "react-router-dom";
 const {Sider} = Layout;
 const {SubMenu} = Menu;
 
+
+
 function SideMenu() {
+
     return ( 
                 <Sider>
                 <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>

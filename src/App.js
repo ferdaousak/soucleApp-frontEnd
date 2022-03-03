@@ -1,4 +1,3 @@
-
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SideMenu from './components/side-menu/SideMenu';
@@ -22,31 +21,63 @@ function App()
 
   useEffect(() => {
     
-    async function loadData()
+    async function loadEnseignant()
     {
-        const c = await getAllCandidats();
-        const f = await getAllFormations();
-        const p = await getAllPromotions();
-        const e = await getAllEnseignants();
-        console.log(e, p, f, c);
         
+        const e = await getAllEnseignants();
         setState({
-          candidats :c.json ,
-          formations : f.json,
-          promotions : p.json,
+          ...state,
           enseignants : e.json
+        })
+
+        console.log("loaded enseignants" ,e)
+        
+    }
+
+    async function loadCandidat()
+    {
+        
+        const e = await getAllCandidats();
+        e.error? console.log("error "+e) : 
+        setState({
+          ...state,
+          candidats : e.json
+        })
+    }
+    async function loadPromotion()
+    {
+        
+        const e = await getAllPromotions();
+        
+        e.error? console.log("error",e) : 
+        setState({
+          ...state,
+          promotions : e.json
         })
         
     }
+
+    async function loadFormation()
+    {
+        
+        const e = await getAllFormations();
+        e.error? console.log("error",e) : 
+        setState({
+          ...state,
+          formations : e.json
+        })
+        
+    }
+
     
-    loadData()
+    loadEnseignant();
+    loadCandidat();
+    loadPromotion();
+    loadFormation();
     return () => {
         
     };
   }, []);
-  
-
-  
 
   return (
     <div className="App">

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Form, Input, Button} from 'antd';
+import React from 'react';
+import { Form, Input, Button, message} from 'antd';
 import { addEnseignants } from '../../services/enseignantsService';
 
 const formItems = [
@@ -11,7 +11,6 @@ const formItems = [
         "emailPerso",
         "emailUbo",
         "mobile",
-        "noEnseignant",
         "pays" ,
         "sexe",
         "telephone",
@@ -21,26 +20,23 @@ const formItems = [
 ]
 function AddEnseignant() {
 
-    const [enseignant, setEnseignant] = useState();
-
-    useEffect(() => 
+    
+    const onFinish = (value) =>
     {
-      
+        console.log(value);
         async function addData(enseignant)
         {
             const response = await addEnseignants(enseignant);
 
-            console.log(response);
+            console.log(response.json);
 
-            setEnseignant(response.json);
+            message.success('Enseignant ajouter avec succes!')
+
         }
-     
-        return () => {
-        
-      }
     
-    }, [])
-    
+        addData(value)
+
+    }
     
     return ( 
 
@@ -49,15 +45,15 @@ function AddEnseignant() {
                 labelCol={{ span: 4 }}
                 wrapperCol={{ span: 8 }}
                 initialValues={{ remember: true }}
-                autoComplete="off">
+                autoComplete="off"
+                onFinish={onFinish}>
 
 
         {formItems.map(name => ( 
             <Form.Item      label={name}
                             name={name}
                             rules={[{ required: true, message: 'SVP saisie '+ name }]}>
-                    
-                    {name ==="noEnseignant" ? <Input type ="number"/> : <Input /> }
+                    <Input />
             </Form.Item>
         ))}
           <Form.Item wrapperCol={{ offset: 8, span: 16 }}>

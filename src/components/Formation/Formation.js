@@ -2,34 +2,34 @@ import React, { useContext } from 'react';
 import { Alert, Table } from 'antd';
 import DataContext from '../../storage/dataContext';
 
+
+const columns = [
+    {
+      title: 'Code de formation',
+      dataIndex: 'codeFormation',
+      key: 'codeFormation'
+    },
+    {
+        title: 'Diplome',
+        dataIndex: 'diplome',
+        key: 'diplome'
+    },
+    {
+        title: 'Nom de formation',
+        dataIndex: 'nomFormation',
+        key: 'nomFormation'
+    },
+    {
+        title: 'Debut Accreditation',
+        dataIndex: 'debutAccreditation',
+        key: 'debutAccreditation'
+    }
+
+]
 function Formation() {
 
     const {formations} = useContext(DataContext);
-
-    const columns = [
-        {
-          title: 'Code de formation',
-          dataIndex: 'codeFormation',
-          key: 'codeFormation'
-        },
-        {
-            title: 'Diplome',
-            dataIndex: 'diplome',
-            key: 'diplome'
-        },
-        {
-            title: 'Nom de formation',
-            dataIndex: 'nomFormation',
-            key: 'nomFormation'
-        },
-        {
-            title: 'Debut Accreditation',
-            dataIndex: 'debutAccreditation',
-            key: 'debutAccreditation'
-        }
-    
-    ]
-
+   
     return ( 
         
        <>

@@ -27,7 +27,7 @@ function App()
         const e = await getAllEnseignants();
         setState({
           ...state,
-          enseignants : e.json
+          enseignants : e
         })
 
         console.log("loaded enseignants" ,e)
@@ -37,23 +37,24 @@ function App()
     async function loadCandidat()
     {
         
-        const e = await getAllCandidats();
-        e.error? console.log("error "+e) : 
+        const e = await getAllCandidats(); 
         setState({
           ...state,
-          candidats : e.json
+          candidats : e
         })
+
+        console.log("loaded candidats" , e);
     }
     async function loadPromotion()
     {
         
         const e = await getAllPromotions();
-        
-        e.error? console.log("error",e) : 
         setState({
           ...state,
-          promotions : e.json
+          promotions : e
         })
+        
+        console.log("loaded promotions" , e);
         
     }
 
@@ -61,12 +62,12 @@ function App()
     {
         
         const e = await getAllFormations();
-        e.error? console.log("error",e) : 
+         
         setState({
           ...state,
-          formations : e.json
+          formations : e
         })
-        
+        console.log("loaded formations" , e);
     }
 
     

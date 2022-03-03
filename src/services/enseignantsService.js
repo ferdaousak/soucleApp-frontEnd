@@ -3,15 +3,22 @@ const BASE_URL = "http://localhost:8080";
 
 export const getAllEnseignants = async () => 
 {
-    const response = await fetch(
-        BASE_URL + '/enseignants',{
-            method : 'GET',
-        } 
-    )
+    try
+    {
+        const response = await fetch(
+            BASE_URL + '/enseignants',{
+                method : 'GET',
+            } 
+        )
 
-    const json = await response.json();
+        const json = await response.json();
 
-    return {json : json}
+        return json;
+    }   
+    catch(e)
+    {
+        return {error : e};
+    }
 }
 
 export const addEnseignants = async (enseignant) =>

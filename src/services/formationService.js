@@ -3,14 +3,14 @@ export const getAllFormations = async () =>
     try{
         const response = await fetch(
             process.env.REACT_APP_BASE_URL + '/formations',{
-                method : 'GET',
+                method : 'GET'
             } 
         )
         const json = await response.json();
     
-        return {json : json}
+        return json
     }catch(e)
     {
-        return {json : {}, error:e}
+        return { error:e}
     }
 }

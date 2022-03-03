@@ -1,7 +1,9 @@
 import React, { useContext } from 'react';
-import { Alert, Table } from 'antd';
 import { Link } from 'react-router-dom';
 import DataContext from '../../storage/dataContext';
+import MainPage from '../../shared/MainPage';
+import AddPromotion from './addPromotion';
+import ChercherPromotion from './chercherPromotion';
 
 
 const columns = [
@@ -42,20 +44,18 @@ const columns = [
 function Promotions() {
 
     const {promotions} = useContext(DataContext);
-
-    return ( 
         
+    return (
         <>
-        {
-             promotions[0] && <Table  pagination={{ defaultPageSize: 5, showSizeChanger: true, pageSizeOptions: ['5', '10', '15']}} size='small' columns={columns} dataSource={promotions} />
-        }
-        {promotions.error && <Alert message = {promotions.status+'  '+promotions.error}
-                                    description={promotions.message}
-                                    type="error"
-                                    showIcon>
-            </Alert>}
+        <MainPage
+            columns={columns}
+            subTitleList={["Liste des Promotions","Ajouter Un Promotion","Chercher un Promotion"]}
+            arrayData={promotions}
+            addComponent={<AddPromotion />} 
+            searchComponent={<ChercherPromotion />}
+            />
         </>
-     );
+    );
 }
 
 export default Promotions;

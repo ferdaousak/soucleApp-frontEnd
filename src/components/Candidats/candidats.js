@@ -2,6 +2,9 @@ import React, { useContext } from 'react';
 import { Alert, Table } from 'antd';
 import { Link } from 'react-router-dom';
 import DataContext from '../../storage/dataContext';
+import MainPage from '../../shared/MainPage';
+import AddCandidat from './addCandidat';
+import ChercherCandidat from './chercherCandidat';
 
 const columns = [
     {
@@ -40,24 +43,18 @@ const columns = [
 function Candidats() {
 
     const {candidats} = useContext(DataContext);
-
-    return ( 
         
+    return (
         <>
-        {
-            candidats[0] && <Table  pagination={{ defaultPageSize: 5, showSizeChanger: true, pageSizeOptions: ['5', '10', '15']}} 
-            size='small' 
+        <MainPage 
             columns={columns}
-            dataSource={candidats} /> 
-        }
-        {candidats.error && <Alert message = {candidats.status+'  '+candidats.error}
-            description={candidats.message}
-            type="error"
-            showIcon>
-</Alert>}
+            subTitleList={["Liste des Candidats","Ajouter Un Candidat","Chercher un Candidat"]}
+            arrayData={candidats}
+            addComponent={<AddCandidat />} 
+            searchComponent={<ChercherCandidat />}
+            />
         </>
-        
-     );
+    );
 }
 
 export default Candidats;   

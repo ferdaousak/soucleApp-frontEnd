@@ -12,74 +12,57 @@ import DataContext from './storage/dataContext';
 
 function App() 
 {
-  const [state, setState] = useState({
-    candidats : [],
-    formations : [],
-    promotions : [],
-    enseignants : []
-  });
+  const [enseignants,setEnseignant] = useState([]);
+  const [formations,setFormations] = useState([]);
+  const [promotions,setPromotions] = useState([]);  
+  const [candidats,setCandidats] = useState([]);
 
-  useEffect(() => {
-    
-    async function loadEnseignant()
+
+  useEffect(() =>
+  {
+    //CHARGER LES DONNES
+    async function loadEnseignants()
     {
-        
         const e = await getAllEnseignants();
-        setState({
-          ...state,
-          enseignants : e
-        })
-
-        console.log("loaded enseignants" ,e)
-        
+        setEnseignant(e);
+        console.log('liste des enseignants ',enseignants);
     }
-
-    async function loadCandidat()
+    async function loadCandidats()
     {
-        
-        const e = await getAllCandidats(); 
-        setState({
-          ...state,
-          candidats : e
-        })
-
-        console.log("loaded candidats" , e);
+        const c = await getAllCandidats();
+        setCandidats(c);
+        console.log('liste des Candidats ',candidats);
     }
-    async function loadPromotion()
+    async function loadFormations()
     {
-        
-        const e = await getAllPromotions();
-        setState({
-          ...state,
-          promotions : e
-        })
-        
-        console.log("loaded promotions" , e);
-        
+        const f = await getAllFormations();
+        setFormations(f);
+        console.log('liste des Formations ',formations);
     }
-
-    async function loadFormation()
+    async function loadPromotions()
     {
-        
-        const e = await getAllFormations();
-         
-        setState({
-          ...state,
-          formations : e
-        })
-        console.log("loaded formations" , e);
+        const p = await getAllPromotions();
+        setPromotions(p);
+        console.log('liste des Promotions ',promotions);
     }
-
     
-    loadEnseignant();
-    loadCandidat();
-    loadPromotion();
-    loadFormation();
+
+    loadEnseignants();
+    loadFormations();
+    loadPromotions();
+    loadCandidats();
     return () => {
-        
+      
     };
   }, []);
 
+
+  let state = {
+    enseignants : enseignants,
+    formations : formations,
+    promotions : promotions,
+    candidats : candidats
+  }
   return (
     <div className="App">
         <Layout style={{height : '100vh'}}>

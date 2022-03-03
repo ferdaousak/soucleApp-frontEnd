@@ -17,7 +17,7 @@ function ChercherEnseignant() {
             {
 
                 const response = await getEnseignant(param,event);
-                setEnseignant(response.json);
+                setEnseignant(response);
                 setLoading(false);
                 setDone(true);
 

@@ -17,7 +17,7 @@ export const getAllEnseignants = async () =>
     }   
     catch(e)
     {
-        return {error : e};
+        throw new Error(e);
     }
 }
 
@@ -38,22 +38,28 @@ export const addEnseignants = async (enseignant) =>
 
 export const getEnseignant = async (param,index) =>
 {
-    let URL = BASE_URL +'/enseignants/';
-    switch (index) {
-        case 1: URL += 'emailUbo/'+param; break;
-        case 2: URL += 'nom/'+param; break;
-        case 3: URL += param; break;
-        default: throw new Error("SVP choisir le bon choix!");
-    }
-    const response = await fetch(
-        URL , {
-            method : 'GET'
+    try {
+        let URL = BASE_URL +'/enseignants/';
+        switch (index) {
+            case 1: URL += 'emailUbo/'+param; break;
+            case 2: URL += 'nom/'+param; break;
+            case 3: URL += param; break;
+            default: throw new Error("SVP choisir le bon choix!");
         }
-    )
-
-    const json = await response.json();
-
-    return {json : json}
+        const response = await fetch(
+            URL , {
+                method : 'GET'
+            }
+        )
+    
+        const json = await response.json();
+    
+        return json;
+    }catch(e)
+    {
+        return {error :e}
+    }
+    
 
 }
 

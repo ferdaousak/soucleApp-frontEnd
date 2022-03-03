@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
-import { Alert, Table } from 'antd';
 import DataContext from '../../storage/dataContext';
+import MainPage from '../../shared/MainPage';
+import AddFormation from './addFormation';
+import ChercherFormation from './chercherFormation';
 
 
 const columns = [
@@ -29,22 +31,19 @@ const columns = [
 function Formation() {
 
     const {formations} = useContext(DataContext);
-   
-    return ( 
         
-       <>
-       {
-           formations[0] && <Table  pagination={{ defaultPageSize: 5, showSizeChanger: true, pageSizeOptions: ['5', '10', '15']}} size='small' columns={columns} dataSource={formations} />
-       }
-       {formations.error && <Alert message = {formations.status+'  '+formations.error}
-                                    description={formations.message}
-                                    type="error"
-                                    showIcon>
-            </Alert>}
-       </>
-        
-        
-     );
+    return (
+        <>
+        <MainPage 
+            columns={columns}
+            subTitleList={["Liste des Formations","Ajouter Un Formation","Chercher un Formation"]}
+            arrayData={formations}
+            addComponent={<AddFormation />} 
+            searchComponent={<ChercherFormation />}
+            />
+        </>
+    );
+    
 }
 
 export default Formation;

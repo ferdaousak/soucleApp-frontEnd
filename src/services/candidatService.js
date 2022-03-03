@@ -11,7 +11,7 @@ export const getAllCandidats = async () =>
         return json
     }catch(e)
     {
-        return {error:e}
+        throw new Error(e);
     }
     
 }

@@ -5,12 +5,12 @@ export const getAllPromotions = async () =>
             process.env.REACT_APP_BASE_URL + '/promotions',{
                 method : 'GET'
             }
-        )
+        );
         const json = await response.json();
     
-        return json
+        return json;
     }catch(e)
     {
-        return { error:e}
+        throw new Error(e);
     }
 }

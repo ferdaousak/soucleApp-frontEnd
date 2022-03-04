@@ -10,7 +10,7 @@ function MainPage(props)
     
     return (
         
-            <Tabs defaultActiveKey={selectedTab} tabPosition="top" onChange={(key)=>setSelectedTab(key)}>
+            <Tabs defaultActiveKey={selectedTab} tabPosition="left" onChange={(key)=>setSelectedTab(key)}>
                 <Tabs.TabPane
                     tab={
                         <span>

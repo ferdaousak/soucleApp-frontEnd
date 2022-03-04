@@ -36,7 +36,7 @@ function Formation() {
         <>
         <MainPage 
             columns={columns}
-            subTitleList={["Liste des Formations","Ajouter Un Formation","Chercher un Formation"]}
+            subTitleList={["Liste des Formations","Ajouter une Formation","Chercher une Formation"]}
             arrayData={formations}
             addComponent={<AddFormation />} 
             searchComponent={<ChercherFormation />}

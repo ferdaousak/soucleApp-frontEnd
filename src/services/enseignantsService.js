@@ -1,6 +1,25 @@
 const BASE_URL = "http://localhost:8080";
 //const BASE_URL = process.env.REACT_APP_BASE_URL;
 
+export const getAllEnseignantsFromURL = async() =>
+{
+    try
+    {
+        const response = await fetch(
+            process.env.REACT_APP_BASE_URL + '/enseignants',{
+                method : 'GET',
+            } 
+        )
+
+        const json = await response.json();
+
+        return json;
+    }   
+    catch(e)
+    {
+        throw new Error(e);
+    }
+}
 export const getAllEnseignants = async () => 
 {
     try

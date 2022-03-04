@@ -21,7 +21,7 @@ function HomePage(props) {
             <Link to="enseignants">
                 <Card hoverable 
                     cover= {<Badge count={data.enseignants.length} size="large" status='success'>
-                    <Avatar src={teacher}  size={{xl : 200}} />
+                    <Avatar src={teacher}  size={{lg:200, xl:200, xxl:300}} />
                 </Badge>}  >
                 <Meta className='title' title="Enseignants"  />
                 </Card >
@@ -31,7 +31,7 @@ function HomePage(props) {
             
                 <Card hoverable 
                     cover= {<Badge count={data.promotions.length} size="large" status='success'>
-                    <Avatar src={promotions} size={{xl : 200}} />
+                    <Avatar src={promotions} size={{lg:200, xl:200, xxl:300}} />
                 </Badge>}  >
                 <Meta className='title' title="Promotions"  />
                 </Card >
@@ -41,7 +41,7 @@ function HomePage(props) {
                 
                 <Card hoverable 
                     cover= {<Badge count={data.formations.length} size="large" status='success'>
-                    <Avatar  src={formation}  size={{xl : 200}} />
+                    <Avatar  src={formation}  size={{lg:200, xl:200, xxl:300}} />
                 </Badge>}  >
                 <Meta className='title' title="Formations"/> 
                     
@@ -51,7 +51,7 @@ function HomePage(props) {
             <Link to="candidats">
                 <Card hoverable 
                     cover= {<Badge count={data.candidats.length} size="large" status='success'>
-                    <Avatar src={students} size={{xl : 200}} />
+                    <Avatar src={students} size={{lg:200, xl:200, xxl:300}}  />
                 </Badge>}  >
                 <Meta className='title' title="Candidats"/>
                 </Card >

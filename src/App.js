@@ -7,12 +7,13 @@ import React, { useEffect, useState } from 'react';
 import { getAllCandidats } from './services/candidatService';
 import { getAllFormations } from './services/formationService';
 import { getAllPromotions } from './services/promotionService';
-import { getAllEnseignants } from './services/enseignantsService';
+import { getAllEnseignants, getAllEnseignantsFromURL } from './services/enseignantsService';
 import DataContext from './storage/dataContext';
 
 function App() 
 {
   const [enseignants,setEnseignant] = useState([]);
+  const [enseignantsProf,setEnseignantProf] = useState([])
   const [formations,setFormations] = useState([]);
   const [promotions,setPromotions] = useState([]);  
   const [candidats,setCandidats] = useState([]);
@@ -26,6 +27,13 @@ function App()
         const e = await getAllEnseignants();
         setEnseignant(e);
         console.log('liste des enseignants ',enseignants);
+    }
+    //CHARGER LES DONNES
+    async function loadEnseignantsProf()
+    {
+        const e = await getAllEnseignantsFromURL();
+        setEnseignantProf(e);
+        console.log('liste des enseignants prof ',enseignantsProf);
     }
     async function loadCandidats()
     {
@@ -47,6 +55,7 @@ function App()
     }
     
 
+    loadEnseignantsProf();
     loadEnseignants();
     loadFormations();
     loadPromotions();
@@ -61,7 +70,8 @@ function App()
     enseignants : enseignants,
     formations : formations,
     promotions : promotions,
-    candidats : candidats
+    candidats : candidats,
+    enseignantsProf : enseignantsProf
   }
   return (
     <div className="App">

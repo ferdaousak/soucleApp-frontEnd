@@ -22,7 +22,7 @@ function MainPage(props)
                 >
                     <TableData columns={props.columns} array={props.arrayData} />
                 </Tabs.TabPane>
-                <Tabs.TabPane style={{maxHeight:'65vh',overflow: 'auto'}}
+                <Tabs.TabPane style={{maxHeight:'70vh',overflow: 'auto'}}
                 tab={
                     <span>
                     <UserAddOutlined />

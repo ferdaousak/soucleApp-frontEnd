@@ -5,7 +5,8 @@ const DataContext = createContext({
     candidats : [],
     formations : [],
     promotions : [],
-    enseignants : []
+    enseignants : [],
+    enseignantsProf: []
 })
 
 export default DataContext;

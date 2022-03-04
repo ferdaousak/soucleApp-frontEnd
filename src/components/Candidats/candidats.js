@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { Alert, Table } from 'antd';
 import { Link } from 'react-router-dom';
 import DataContext from '../../storage/dataContext';
 import MainPage from '../../shared/MainPage';
@@ -36,7 +35,7 @@ const columns = [
         title: 'Promotion',
         dataIndex: 'promotion',
         key: 'promotion',
-        render : promotion => <Link to="/promotions">{promotion.siglePromotion}</Link>
+        render : promotion => <Link to="/promotions">{promotion? promotion.siglePromotion: 'null'}</Link>
     }
 
 ]
